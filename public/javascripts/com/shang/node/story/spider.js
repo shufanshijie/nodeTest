@@ -4,19 +4,18 @@
  */
 var http = require("http");
 var Iconv = require("iconv-lite");
-http.get("http://www.dingdianzw.com/book/2430.html",function(res){
-    var buffers = [], size = 0;
-    res.on('data', function(buffer) {
-        buffers.push(buffer);
-        size += buffer.length;
+var jsdom = require("jsdom");
+var pageString = http.get("http://www.bai-ma.com/book/15/15327/",function(res){
+    var convertStream = Iconv.decodeStream('GBK');
+    res.pipe(convertStream).collect(function(error,str){
+        console.log(str);
+        //jsdom.env(str, ["../../../../../../node_modules/jquery/dist/jquery.js"], function (err, window) {
+        //    var $ = require("jquery")(window)
+        //    var content = $("#htmlContent");
+        //    var text = content.html();
+        //    console.log(text);
+        //});
     });
-    res.on('end', function() {
-        var buffer = new Buffer(size), pos = 0;
-        for(var i = 0, l = buffers.length; i < l; i++) {
-            buffers[i].copy(buffer, pos);
-            pos += buffers[i].length;
-        }
-        var result = Iconv.decode(buffer,"gbk");
-        console.log(result)
-    });
+}).on("error",function(error){
+    console.error(error);
 });
