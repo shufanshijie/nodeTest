@@ -5,7 +5,7 @@
 var http = require("http");
 var Iconv = require("iconv-lite");
 var jsdom = require("jsdom");
-var pageString = http.get("http://www.bai-ma.com/book/15/15327/",function(res){
+var pageString = http.get("http://www.bai-ma.com/book/",function(res){
     var convertStream = Iconv.decodeStream('GBK');
     res.pipe(convertStream).collect(function(error,str){
         console.log(str);
@@ -19,3 +19,7 @@ var pageString = http.get("http://www.bai-ma.com/book/15/15327/",function(res){
 }).on("error",function(error){
     console.error(error);
 });
+function saveHtml(data){
+    var pool = require("./mysql-connector-pool").getPool();
+    pool.query("insert into ");
+}
