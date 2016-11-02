@@ -27,13 +27,5 @@ var mysql = require("mysql");
 //pool.query("insert into test_node (book_name,chapter_index,chapter_name) values (?,?,?)",['完美世界',1,'大荒'],function(error,results){
 //    console.log(results);
 //});
-var pool = require("../story/mysql-connector-pool");
-var mysqlPool = pool.getPool();
-mysqlPool.getConnection(function(error,connection){
-    if(error) throw error;
-    connection.query("select * from test_node",function(error,rows){
-       console.log(rows.length);
-        connection.release();
-    });
-});
+
 

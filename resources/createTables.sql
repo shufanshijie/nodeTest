@@ -16,8 +16,10 @@ alter table book add COLUMN book_type VARCHAR(50);
 alter table book add COLUMN  book_tags VARCHAR(50);
 alter table book add COLUMN create_time datetime;
 alter table book add COLUMN update_time datetime;
+ALTER TABLE book add picture VARCHAR(200);
 alter table author add COLUMN create_time datetime;
 alter table author add COLUMN update_time datetime;
+ALTER TABLE author add qidian_id int ;
 create table chapter (
 	id INT not null PRIMARY KEY auto_increment,
 	chapter_index INT,
