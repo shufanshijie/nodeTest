@@ -38,7 +38,7 @@ function parseHtml(str){
 
 
 
-function saveHtml(data){
-    var pool = require("./mysql-connector-pool").getPool();
-    pool.query("insert into ");
-}
+//function saveHtml(data){
+//    var pool = require("./mysql-connector-pool").getPool();
+//    pool.query("insert into ");
+//}
